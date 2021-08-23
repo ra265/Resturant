@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #emailHelp {
+      color: black;
+    }
+
+    body {
+      background-image: url(./images/g-5.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .content {
+      background: rgb(185, 82, 82);
+      width: 40%;
+      padding: 30px;
+      margin: 100px auto;
+      font-size: 15px;
+      color: white;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    input[type=text],
+    select,
+    textarea {
+      width: 95%;
+      padding: 12px;
+      border: 1px solid#ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    button[type=clicked] {
+      width: 60%;
+      padding: 4px;
+      background-color: black;
+      color: white;
+    }
+
+    input[type=password],
+    select,
+    textarea {
+      width: 70%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+
+    input[type=number],
+    select,
+    textarea {
+      width: 70%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+    button[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    button[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+
+
+    .col-25 {
+      float: left;
+      width: 25%;
+      margin-top: 6px;
+    }
+
+    .col-75 {
+      float: left;
+      width: 75%;
+      margin-top: 6px;
+    }
+
+
+    .row:after {
+
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    @media screen and (max-width: 600px) {
+
+      .col-25,
+      .col-75 {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAhoowVWKOnfnStCrYerA7-a9ptwhkh3hE",
+      authDomain: "hackathon-project-b1cf1.firebaseapp.com",
+      projectId: "hackathon-project-b1cf1",
+      storageBucket: "hackathon-project-b1cf1.appspot.com",
+      messagingSenderId: "406337990524",
+      appId: "1:406337990524:web:9343ac06ae872d3b3abef9"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+  <div class="content">
+    <!-- <div class="card"> -->
+      <form onsubmit="return false">
+        <div class="form-group col-12.col-md-8">
+          <h1>Create an account</h1>
+          <div class="row">
+            <div class="col-25">
+              <label for="resturantname">Resturant Name</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="resturantname" name="" placeholder="Your name..">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="email">Email Address</label>
+            </div>
+            <div class="col-75">
+              <input type="text" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp">We'll never share your email with anyone
+                else.</small>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-25">
+              <label for="password">Password</label>
+            </div>
+            <div class="col-75">
+              <input type="password" name="password" id="password" required placeholder="Password">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="Age">Age</label>
+            </div>
+            <div class="col-75">
+              <input type="number" id="age" name="age" placeholder="Your age..">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="country">Country</label>
+            </div>
+            <div class="col-75">
+              <select id="country" name="country">
+                <option value="pakistan">Pakistan</option>
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="city">City</label>
+            </div>
+            <div class="col-75">
+              <select id="city" name="city">
+                <option value="karachi">Karachi</option>
+                <option value="sindh">Sindh</option>
+                <option value="lahore">Lahore</option>
+                <option value="punjab">Punjab</option>
+              </select>
+            </div>
+          </div><br><br>
+          <div class="row">
+            <button type="submit" value="SignUp" href="#" onclick="signup()">Signup</button>
+            <button type="clicked"><a href="login.html">I HAVE AN ACCOUNT</a></button>
+          </div><br><br><br><br>
+          <div class="alert alert-dark h-100" role="alert" id="message"></div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
